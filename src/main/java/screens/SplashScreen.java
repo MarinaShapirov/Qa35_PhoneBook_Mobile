@@ -9,9 +9,15 @@ public class SplashScreen extends BaseScreen{
         super(driver);
     }
     @FindBy(xpath = "//*[@resource-id = 'com.sheygam.contactapp:id/version_text']")
+
     AndroidElement versionTextView;
 
     public String getCurrentVer(){
         return versionTextView.getText();
+    }
+
+    public AuthenticationScreen checkVersion(String ver){
+        versionTextView.getText().contains(ver);
+        return new AuthenticationScreen(driver);
     }
 }

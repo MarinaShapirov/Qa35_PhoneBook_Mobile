@@ -6,7 +6,7 @@ import org.testng.annotations.Test;
 import screens.SplashScreen;
 
 public class LaunchTest extends AppiumConfig {
-    @Test
+    @Test(enabled = false)
     public void launch(){
 
         String version = new SplashScreen(driver).getCurrentVer();
