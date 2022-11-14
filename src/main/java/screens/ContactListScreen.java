@@ -1,8 +1,12 @@
 package screens;
 
 import io.appium.java_client.AppiumDriver;
+import io.appium.java_client.TouchAction;
 import io.appium.java_client.android.AndroidElement;
+import io.appium.java_client.touch.offset.PointOption;
 import org.openqa.selenium.By;
+import org.openqa.selenium.Dimension;
+import org.openqa.selenium.Rectangle;
 import org.openqa.selenium.support.FindBy;
 import org.openqa.selenium.support.ui.ExpectedConditions;
 import org.openqa.selenium.support.ui.WebDriverWait;
@@ -31,6 +35,37 @@ public class ContactListScreen extends BaseScreen{
     List<AndroidElement> contactNameList;
     @FindBy(id = "com.sheygam.contactapp:id/rowPhone")
     List<AndroidElement> contactPhoneList;
+
+    @FindBy(id = "com.sheygam.contactapp:id/rowContainer")
+    List<AndroidElement> contactList;
+
+    @FindBy(id = "android:id/button1")
+    AndroidElement yesBtn;
+
+    @FindBy(id = "android:id/button2")
+    AndroidElement cancelBtn;
+
+    public ContactListScreen removeOneContact(){
+        //shouldHave(activityViewText, "Contact list", 5);
+        AndroidElement contact = contactList.get(0);
+        Dimension dimension = driver.manage().window().getSize();
+        System.out.println(dimension.getHeight());
+        System.out.println(dimension.getWidth());
+
+        Rectangle rect = contact.getRect();
+        int x1 = 0, x2 = 0, y=0;
+        x1 = rect.getX() + rect.getWidth()/8;
+        y  = rect.getY() + rect.getHeight()/2; //rect.getX() + rect.getWidth()*0.8;  80 percent
+        x2 = x1+ (int)(rect.getWidth()*0.8);
+
+        TouchAction<?> ta = new TouchAction<>(driver);
+        ta.longPress(PointOption.point(x1, y))
+                .moveTo(PointOption.point(x2, y))
+                .release().perform();
+
+        should(yesBtn, 6);
+        return this;
+    }
 
     public boolean isContactListActivityPresent(){
         should(addBtn, 10);
@@ -73,7 +108,7 @@ public class ContactListScreen extends BaseScreen{
                 iaActive = true;
             else
                 pause(500);
-        }while((iaActive==false) && (++cnt<5));
+        }while((iaActive==false) && (++cnt<7));
 
         return iaActive;
     }

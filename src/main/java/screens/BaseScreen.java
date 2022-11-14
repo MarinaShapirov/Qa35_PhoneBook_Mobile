@@ -16,9 +16,9 @@ public class BaseScreen {
     }
 
     public void type(AndroidElement el, String text){
+        el.click();
+        el.clear();
         if(text != null){
-            el.click();
-            el.clear();
             el.sendKeys(text);
         }
         driver.hideKeyboard();
@@ -39,6 +39,11 @@ public class BaseScreen {
         return
                 new WebDriverWait(driver, time)
                 .until(ExpectedConditions.textToBePresentInElement(el, text));
+    }
+
+    public void shouldHave(AndroidElement el, String text, int time){
+        new WebDriverWait(driver, time)
+                        .until(ExpectedConditions.textToBePresentInElement(el, text));
     }
 
     public boolean isDisplayedOnScreen(AndroidElement el){

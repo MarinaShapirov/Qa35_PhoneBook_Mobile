@@ -64,9 +64,7 @@ public class AddNewContactScreen extends BaseScreen{
 
     public AddNewContactScreen submitContactNegative(){
         createBtn.click();
-        //pause(5000);
         return this;
-
     }
 
     public AddNewContactScreen isErrorMsgContainsText(String s) {
