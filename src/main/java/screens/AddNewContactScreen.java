@@ -15,28 +15,20 @@ public class AddNewContactScreen extends BaseScreen{
     public AddNewContactScreen(AppiumDriver<AndroidElement> driver) {
         super(driver);
     }
-
     @FindBy(id = "com.sheygam.contactapp:id/inputName")
     AndroidElement nameEditText;
-
     @FindBy(id = "com.sheygam.contactapp:id/inputLastName")
     AndroidElement lastNameEditText;
-
     @FindBy(id = "com.sheygam.contactapp:id/inputEmail")
     AndroidElement eMailEdittext;
-
     @FindBy(id = "com.sheygam.contactapp:id/inputPhone")
     AndroidElement phoneEditText;
-
     @FindBy(id = "com.sheygam.contactapp:id/inputAddress")
     AndroidElement addressEditText;
-
     @FindBy(id = "com.sheygam.contactapp:id/inputDesc")
     AndroidElement descrpEdittext;
-
     @FindBy(id = "com.sheygam.contactapp:id/createBtn")
     AndroidElement createBtn;
-
     @FindBy(id = "android:id/message")
     AndroidElement errTextView;
     //@FindBy(id = "android:id/button1")

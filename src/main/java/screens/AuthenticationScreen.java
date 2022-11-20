@@ -16,20 +16,16 @@ public class AuthenticationScreen extends BaseScreen{
 
     @FindBy (xpath = "//*[@resource-id='com.sheygam.contactapp:id/action_bar']/android.widget.TextView")
     AndroidElement activityViewText;
-
     //@FindBy(xpath = "//*[@resource-id = 'com.sheygam.contactapp:id/inputEmail']")
     @FindBy(id = "com.sheygam.contactapp:id/inputEmail")
     AndroidElement eMailEditText;
-
     //@FindBy(xpath = "//*[@resource-id = 'com.sheygam.contactapp:id/inputPassword']")
     @FindBy(id = "com.sheygam.contactapp:id/inputPassword")
     AndroidElement passwdEditText;
-
     //@FindBy(xpath = "//*[@resource-id = 'com.sheygam.contactapp:id/loginBtn']")
     //@FindBy(id = "com.sheygam.contactapp:id/loginBtn")
     @FindBy(xpath = "//*[@text = 'LOGIN']")
     AndroidElement loginBtn;
-
     //@FindBy(xpath = "//*[@resource-id = 'com.sheygam.contactapp:id/regBtn']")
     //@FindBy(id = "com.sheygam.contactapp:id/regBtn")
     @FindBy(xpath = "//*[@text = 'REGISTRATION']")
@@ -38,7 +34,6 @@ public class AuthenticationScreen extends BaseScreen{
 
     @FindBy(id = "android:id/message")
     AndroidElement errTextView;
-
     //@FindBy(id = "android:id/button1")
     @FindBy(xpath = "//*[@text = 'OK']")
     AndroidElement errOkBtn;

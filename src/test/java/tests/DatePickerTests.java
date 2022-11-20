@@ -4,38 +4,24 @@ import config.AppiumConfig;
 import models.User;
 import org.testng.annotations.AfterClass;
 import org.testng.annotations.BeforeClass;
-import org.testng.annotations.BeforeMethod;
 import org.testng.annotations.Test;
 import screens.AuthenticationScreen;
 import screens.ContactListScreen;
 
-public class RemoveContactsTests extends AppiumConfig {
-
+public class DatePickerTests extends AppiumConfig {
     @BeforeClass
     public void preCondition(){
         new AuthenticationScreen(driver).login(User.builder().email("sonya@gmail.com").psw("Ssonya12345$").build())
                 .isContactListActivityPresent();
     }
-    @BeforeMethod
-    public void contactsProvider() {
+
+    @Test(enabled = false)
+    public void selectDateCurrentMonth(){
         new ContactListScreen(driver)
-                .contactProvider();
-    }
-
-    @Test
-    public void removeOneContactSuccess(){
-        new ContactListScreen(driver)
-                .removeOneContact()
-                .IsListSizeDecremented();
-
-    }
-
-    @Test
-    public void removeAllContactSuccess(){
-        new ContactListScreen(driver)
-                .removeAllContact()
-                .IsNoContactctHere();
-
+                .openDatePickerScreen()
+                .openCalendar()
+                .selectDate("15 December 2022")
+                .isDateChanged("15 December 2022");
     }
 
     @AfterClass
@@ -44,4 +30,6 @@ public class RemoveContactsTests extends AppiumConfig {
                 .logOut();
 
     }
+
+
 }
